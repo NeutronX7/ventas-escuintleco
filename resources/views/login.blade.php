@@ -18,13 +18,15 @@
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
             <form action="{{ route('login.submit') }}" method="POST">
                 @csrf
-                <label for="username">Usuario</label>
-                <input type="text" id="username" name="username" required><br><br>
-
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required><br><br>
-
-                <button type="submit">Iniciar sesión</button>
+                <h2>Login</h2>
+                <input type="text" name="name" placeholder="Nombre" value="{{ old('name') }}" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar sesion</button>
+                @if ($errors->any())
+                    <div class="error">
+                        <p>{{ $errors->first() }}</p>
+                    </div>
+                @endif
             </form>
         </div>
     </body>
